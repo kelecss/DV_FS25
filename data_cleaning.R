@@ -38,7 +38,11 @@ stem_total <- stem_per_field %>%
     .groups = "drop"
   )
 
+stem_disaggregated <- stem_per_field %>% 
+  select(country, year, field_of_study,pct_female_per_field) %>% 
+  write_csv("stem_disaggregated.csv")
+
 stem_final <- stem_total %>%
   select(country, year, pct_female_stem) %>%
-  write_csv("pct_female_stem_over_time.csv")
+  write_csv("stem_final.csv")
 
