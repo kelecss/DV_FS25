@@ -1,7 +1,7 @@
 # DV_FS25: Final Project
-Authors: Emmanuel & Kerim
-Supervisor: Dr. Charlotte Cabane
-Course: Data visualization Workshop (FS25)
+Authors: Emmanuel & Kerim  
+Supervisor: Dr. Charlotte Cabane  
+Course: Data visualization Workshop (FS25)  
 
 ## Project Description and Goal
 TBD
@@ -35,4 +35,4 @@ Variables:
 ### stem_disaggregated.csv and stem_final.csv
 UNESCO Institute for Statistics (2025), 
 retrieved from http://data.uis.unesco.org/, based on the indicators for tertiary
-education graduates by field of study and sex.
+education graduates (ISCED 5-8 Tertiary Education) by field of study and sex.
