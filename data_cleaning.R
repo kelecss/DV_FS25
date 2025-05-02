@@ -1,6 +1,8 @@
 library(readr)
 library(dplyr)
 library(tidyr)
+library(countrycode)
+
 
 tag <- function(file, field, sex) {
   read_csv(file) %>%
@@ -40,9 +42,29 @@ stem_total <- stem_per_field %>%
 
 stem_disaggregated <- stem_per_field %>% 
   select(country, year, field_of_study,pct_female_per_field) %>% 
-  write_csv("stem_disaggregated.csv")
+  mutate(
+    country_name = countrycode(country, origin = "iso3c", destination = "country.name.en")
+  ) %>% write_csv("stem_disaggregated.csv")
 
 stem_final <- stem_total %>%
   select(country, year, pct_female_stem) %>%
-  write_csv("stem_final.csv")
+  mutate(
+    country_name = countrycode(country, origin = "iso3c", destination = "country.name.en")
+    ) %>% write_csv("stem_final.csv")
+
+
+
+#Grid
+all_countries <- unique(stem_final$country)
+all_years <- unique(stem_final$year)
+
+country_year_grid <- expand.grid(
+  country = all_countries,
+  year = all_years
+)
+
+stem_complete <- country_year_grid %>%
+  left_join(stem_final, by = c("country", "year"))
+
+
 
