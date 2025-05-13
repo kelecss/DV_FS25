@@ -46,6 +46,8 @@ stem_disaggregated <- stem_per_field %>%
     country_name = countrycode(country, origin = "iso3c", destination = "country.name.en")
   ) %>% write_csv("stem_disaggregated.csv")
 
+View(stem_disaggregated)
+
 stem_final <- stem_total %>%
   select(country, year, pct_female_stem) %>%
   mutate(
@@ -63,8 +65,10 @@ country_year_grid <- expand.grid(
   year = all_years
 )
 
-stem_complete <- country_year_grid %>%
-  left_join(stem_final, by = c("country", "year"))
+stem_grid <- country_year_grid %>%
+  left_join(stem_final, by = c("country", "year")) %>%  
+  arrange(country, year) %>%
+  write_csv("stem_grid.csv")
 
 
 
