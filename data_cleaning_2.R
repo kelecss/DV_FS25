@@ -91,4 +91,5 @@ stem_grid_2 <- country_year_grid_2 %>%
 # Exportieren
 write_csv(stem_grid_2, "stem_grid_2.csv")
 
-View(stem_grid)
+
+
